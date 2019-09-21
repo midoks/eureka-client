@@ -9,7 +9,7 @@ use GuzzleHttp\Client as GClient;
 
 class Client {
 
-    const VERSION = '0.1.0';
+    const VERSION = '1.0';
 
     public $host;
     public $port;
