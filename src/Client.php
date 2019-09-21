@@ -27,12 +27,19 @@ class Client {
     }
 
     /**
+     * 获取Eureka地址
      * @return string
      */
     protected function getEurekaUri() {
         return $this->host . ':' . $this->port . '/' . $this->context;
     }
 
+    /**
+     * 获取默认配置
+     * @param string $appId
+     * @param string $instanceId
+     * @return array
+     */
     public function getDefaultConfig($appId, $instanceId) {
         $config = [
             'eurekaDefaultUrl'              => 'http://127.0.0.1:8008/eureka',
@@ -68,6 +75,9 @@ class Client {
         return $config;
     }
 
+    /**
+     *
+     */
     public function registerApp($appId, $instanceId, $config = []) {
         if (empty($config)) {
             $config = $this->getDefaultConfig($appId, $instanceId);
@@ -184,7 +194,7 @@ class Client {
     }
 
     /**
-     * Update app Instance metadata.
+     * 更新Instance metadata.
      *
      * @param string $appId
      * @param string $instanceId
