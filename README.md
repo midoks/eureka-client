@@ -32,51 +32,51 @@ $client = new \Euraka\Client($this->host, $this->port, $this->context);
 ```php
 
 // Create eureka v2 client.
-$eurekaClient = new EurekaClient('localhost', 8080);
+$client = new EurekaClient('localhost', 8080);
 
 // Create eureka v1 client.
-$eurekaClient = new EurekaClient('localhost', 8080, 'eureka');
+$client = new EurekaClient('localhost', 8080, 'eureka');
 ```
 ### 4. Make requests
 ```php
 try {
   // Register new application instance.
-  $response = $eurekaClient->registerApp($appName, $instance);
+  $response = $client->registerApp($appName, $instance);
 
   // Query for all instances.
-  $allApps = $eurekaClient->getAllApps();
+  $allApps = $client->getAllApps();
 
   // Query for all application instances.
-  $app = $eurekaClient->getApp($appName);
+  $app = $client->getApp($appName);
 
   // Query for a specific application instance.
-  $appInstance = $eurekaClient->getAppInstance($appName, $instanceId);
+  $appInstance = $client->getAppInstance($appName, $instanceId);
 
   // Query for a specific instance.
-  $instance = $eurekaClient->getInstance($instanceId);
+  $instance = $client->getInstance($instanceId);
 
   // Send application instance heartbeat.
-  $response = $eurekaClient->heartBeat($appName, $instanceId);
+  $response = $client->heartBeat($appName, $instanceId);
 
   // Take instance out of service.
-  $response = $eurekaClient->takeInstanceOut($appName, $instanceId);
+  $response = $client->takeInstanceOut($appName, $instanceId);
 
   // Put instance back into service.
-  $response = $eurekaClient->putInstanceBack($appName, $instanceId);
+  $response = $client->putInstanceBack($appName, $instanceId);
 
   // Update metadata.
-  $response = $eurekaClient->updateAppInstanceMetadata($appName, $instanceId, [
+  $response = $client->updateAppInstanceMetadata($appName, $instanceId, [
     'new_key' => 'new_value',
   ]);
 
   // Query for all instances under a particular vip address/
-  $instances = $eurekaClient->getInstancesByVipAddress('test_vip_address');
+  $instances = $client->getInstancesByVipAddress('test_vip_address');
 
   // Query for all instances under a particular secure vip address.
-  $instances = $eurekaClient->getInstancesBySecureVipAddress('test_secure_vip_address');
+  $instances = $client->getInstancesBySecureVipAddress('test_secure_vip_address');
 
   // De-register application instance.
-  $response = $eurekaClient->deRegisterApp($appName, $instanceId);
+  $response = $client->deRegisterApp($appName, $instanceId);
 }
 catch (Exception $e) {
   echo $e->getMessage() . PHP_EOL;
