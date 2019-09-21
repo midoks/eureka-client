@@ -30,9 +30,6 @@ $client = new \Euraka\Client($this->host, $this->port, $this->context);
 ```
 ### 3. Create Eureka client
 ```php
-// Eureka client usage example.
-// Create guzzle client.
-$guzzle = new Client();
 
 // Create eureka v2 client.
 $eurekaClient = new EurekaClient('localhost', 8080);
@@ -44,7 +41,7 @@ $eurekaClient = new EurekaClient('localhost', 8080, 'eureka');
 ```php
 try {
   // Register new application instance.
-  $response = $eurekaClient->register($appName, $instance);
+  $response = $eurekaClient->registerApp($appName, $instance);
 
   // Query for all instances.
   $allApps = $eurekaClient->getAllApps();
@@ -79,7 +76,7 @@ try {
   $instances = $eurekaClient->getInstancesBySecureVipAddress('test_secure_vip_address');
 
   // De-register application instance.
-  $response = $eurekaClient->deRegister($appName, $instanceId);
+  $response = $eurekaClient->deRegisterApp($appName, $instanceId);
 }
 catch (Exception $e) {
   echo $e->getMessage() . PHP_EOL;
